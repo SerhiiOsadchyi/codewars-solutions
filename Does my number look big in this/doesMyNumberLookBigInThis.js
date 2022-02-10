@@ -23,15 +23,14 @@ function narcissistic(value) {
     console.log(`numberArray = ${numberArray}`)
     let valueInPaws = 0
 
-    for (let i = 0; i < numberArray.length; i++) {
-        valueInPaws += Math.pow(numberArray[i], numberArray.length)
-        console.log(`valueInPaws = ${valueInPaws}`)
+    for (const numStr of numberArray) {
+        valueInPaws += Math.pow(numStr, numberArray.length)
+        console.log(`value In Paws = ${valueInPaws}`)
     }
 
-    const isValueNarcisstic = (valueInPaws === value)
-    console.log(`isValueNarcisstic = ${isValueNarcisstic}`)
+    console.log(`is Value Narcisstic = ${(valueInPaws === value)}`)
 
-    return isValueNarcisstic
+    return (valueInPaws === value)
 }
 
 narcissistic(1652)
