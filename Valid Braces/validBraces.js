@@ -25,40 +25,59 @@ const parenthesis = ['(', ')']
 
 function validBraces(braces){
     let bracesArray = braces.split('')
-    let count = 0
-    const target = bracesArray.length / 2
 
-    if (bracesArray.length % 2 !== 0) {
+    const isBracesValid = parseArray(bracesArray)
+
+    return isBracesValid
+}
+
+function parseArray(arr) {
+    if (arr.length % 2 !== 0) {
         return false
     }
 
-    while (bracesArray.length > 0) {
-        const bracesTypeArray = getBracesTypeArray(bracesArray[0])
-        const closeBracesIndex = getCloseBracesIndex(bracesTypeArray, bracesArray)
-        bracesArrayCheck = bracesArray.slice(1, closeBracesIndex)
+    while (arr.length > 0) {
+        const bracesTypeArray = getBracesTypeArray(arr[0])
+        const closeBracesIndex = getCloseBracesIndex(bracesTypeArray, arr)
+        bracesArrayCheck = arr.slice(1, closeBracesIndex)
 
-        if (bracesArrayCheck.length % 2 !== 0 || closeBracesIndex === 0) {
-            console.log(`bracesArray.length = ${bracesArray.length}`)
-            break
+        if (closeBracesIndex < arr.length) {
+            const restBracesArray = arr.slice(closeBracesIndex + 1)
+            parseArray(restBracesArray)
         }
 
-        bracesArray.splice(0, 1)
-        // deleted 1 element from bracesArray before
-        bracesArray.splice(closeBracesIndex - 1, 1)
-        count++
+        if (bracesArrayCheck.length % 2 !== 0 || closeBracesIndex === false) {
+            return false
+        }
+
+        arr.splice(0, 1)
+        arr.splice(closeBracesIndex - 1, 1)  // deleted 1 element from bracesArray before
+
     }
 
-    return count === target ? true : false
+    return true
+
 }
 
 function getCloseBracesIndex(bracesTypeArray, inputBracesArray) {
-    for (let j = 1 ; j < inputBracesArray.length; j++) {
-        if (bracesTypeArray[1] === inputBracesArray[j]) {
-            return j
+    let countOpenBraces = 1
+    let countCloseBraces = 0
+
+    for (let i = 1 ; i < inputBracesArray.length; i++) {
+        if (bracesTypeArray[0] === inputBracesArray[i]) {
+            countOpenBraces++
+        }
+
+        if (bracesTypeArray[1] === inputBracesArray[i]) {
+            countCloseBraces++
+        }
+
+        if (countOpenBraces === countCloseBraces) {
+            return i
         }
     }
 
-    return 0
+    return false
 }
 
 function getBracesTypeArray(inputBraces) {
@@ -74,6 +93,5 @@ function getBracesTypeArray(inputBraces) {
     }
 }
 
-console.log(validBraces("(){}[]"))
-
-
+//console.log(validBraces("([{}])"))
+console.log(validBraces("(({{[[]]}}))"))
