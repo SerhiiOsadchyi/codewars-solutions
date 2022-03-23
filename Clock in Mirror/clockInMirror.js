@@ -1,5 +1,6 @@
 /*
 Clock in Mirror
+https://www.codewars.com/kata/56548dad6dae7b8756000037
 
 Peter can see a clock in the mirror from the place he sits in the office. When he saw the clock shows 12:22
 

@@ -1,5 +1,6 @@
 /*
 Take a Ten Minute Walk
+https://www.codewars.com/kata/54da539698b8a2ad76000228
 
 You live in the city of Cartesia where all roads are laid out in a perfect grid. 
 You arrived ten minutes too early to an appointment, so you decided to take the opportunity to go for a short walk. 

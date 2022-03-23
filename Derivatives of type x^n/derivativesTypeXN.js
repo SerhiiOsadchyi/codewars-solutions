@@ -1,5 +1,6 @@
 /*
 Derivatives of type x^n
+https://www.codewars.com/kata/55e2de13b668981d3300003d
 
 You are provided with a function of the form f(x) = axⁿ, that consists of a single term only and 'a' and 'n' are integers, e.g f(x) = 3x², f(x) = 5 etc.
 
